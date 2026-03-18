@@ -57,29 +57,29 @@ jobs:
         # 检查核心功能
         echo "检查核心导入..."
         python << 'PY'
-import sys
-import tempfile
-import shutil
+        import sys
+        import tempfile
+        import shutil
 
-sys.path.insert(0, "src")
+        sys.path.insert(0, "src")
 
-try:
-    from three_component_memory import MemorySystem, __version__
-    print(f"✅ 核心导入成功 v{__version__}")
+        try:
+            from three_component_memory import MemorySystem, __version__
+            print(f"✅ 核心导入成功 v{__version__}")
 
-    # 测试简化初始化
-    test_dir = tempfile.mkdtemp()
-    memory = MemorySystem({"data_path": test_dir, "debug": False})
-    stats = memory.get_stats()
-    print(f"✅ 系统初始化: {stats.get('status', 'unknown')}")
+            # 测试简化初始化
+            test_dir = tempfile.mkdtemp()
+            memory = MemorySystem({"data_path": test_dir, "debug": False})
+            stats = memory.get_stats()
+            print(f"✅ 系统初始化: {stats.get('status', 'unknown')}")
 
-    shutil.rmtree(test_dir)
-except Exception as e:
-    print(f"❌ 导入失败: {e}")
-    import traceback
+            shutil.rmtree(test_dir)
+        except Exception as e:
+            print(f"❌ 导入失败: {e}")
+            import traceback
 
-    traceback.print_exc()
-    sys.exit(1)
+            traceback.print_exc()
+            sys.exit(1)
 PY
     
     - name: Upload test results
