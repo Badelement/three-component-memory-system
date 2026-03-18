@@ -5,13 +5,15 @@
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![GitHub Issues](https://img.shields.io/github/issues/template/issues.svg)](https://github.com/yourusername/three-component-memory-system/issues)
 
-A smart memory management system for OpenClaw that combines **LanceDB** (vector search), **SQLite** (structured storage), and **NetworkX** (relationship graph) to provide automatic conversation recording, semantic search, and 70-90% token savings.
+## 中文
 
-## 中文简介
+想看英文版本：[`跳转到 English`](#english)
+
+### 中文简介
 
 用于 OpenClaw 的智能记忆管理系统：将 **LanceDB**（向量检索）、**SQLite**（结构化存储）以及 **NetworkX**（关系图）结合，实现自动对话录入、语义记忆检索，并可减少 **70%-90%** 的 token 使用量。
 
-## 中文功能特点
+### 中文功能特点
 
 ### 核心功能
 - **自动对话录入**：智能记录重要讨论内容
@@ -25,7 +27,7 @@ A smart memory management system for OpenClaw that combines **LanceDB** (vector 
 - **可扩展设计**：随记忆数量线性增长
 - **易集成**：提供简单的 OpenClaw skill 接口
 
-## 中文快速安装
+### 中文快速安装
 
 ### OpenClaw 用户
 ```bash
@@ -60,7 +62,7 @@ cp -r src ~/.openclaw/skills/three-component-memory
 openclaw gateway restart
 ```
 
-## 中文快速开始
+### 中文快速开始
 
 ### 基本用法
 ```python
@@ -89,11 +91,19 @@ for mem in results:
 /memory config <key> <value>                       # 更新配置
 ```
 
-## 中文文档
+### 中文文档
 - **[Getting Started](docs/getting-started.md)** - 完整安装与基础使用指南
 - **[API Reference](docs/api-reference.md)** - 详细 API 文档
 - **[Architecture](docs/architecture.md)** - 技术架构与设计说明
 - **[Examples](examples/)** - 不同使用场景的代码示例
+
+[`跳转到 English`](#english)
+
+## English
+
+A smart memory management system for OpenClaw that combines **LanceDB** (vector search), **SQLite** (structured storage), and **NetworkX** (relationship graph) to provide automatic conversation recording, semantic search, and 70-90% token savings.
+
+想看中文版本：[`跳转到 中文`](#中文)
 
 
 ## ✨ Features
