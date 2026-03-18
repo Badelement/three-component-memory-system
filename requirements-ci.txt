@@ -1,0 +1,10 @@
+# CI环境依赖 - 轻量级版本
+numpy>=1.21.0
+networkx>=3.0
+# LanceDB 和 sentence-transformers 在CI中可选
+# lancedb>=0.4.0
+# sentence-transformers>=2.2.0
+
+# 测试依赖
+pytest>=7.0.0
+pytest-cov>=4.0.0
