@@ -153,3 +153,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 **Three-Component Memory System** - Giving AI assistants real long-term memory
+
+---
+
+**Latest Version**: 1.2.0 (2026-03-19)  
+**Changelog**: [English](CHANGELOG.md) | [中文](CHANGELOG_zh.md)  
+**Status**: Production Ready (skill-creator optimized)

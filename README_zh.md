@@ -155,3 +155,9 @@ for mem in results:
 ---
 
 **三组件记忆系统** - 让 AI 助手拥有真正的长期记忆
+
+---
+
+**最新版本**: 1.2.0 (2026-03-19)  
+**更新日志**: [English](CHANGELOG.md) | [中文](CHANGELOG_zh.md)  
+**状态**: 生产就绪（基于skill-creator优化）

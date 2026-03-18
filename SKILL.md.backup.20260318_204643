@@ -1,0 +1,226 @@
+---
+name: three-component-memory
+description: Smart memory management system combining LanceDB (vector search), SQLite (structured storage), and NetworkX (relationship graph). Provides automatic conversation recording, semantic search, and 70-90% token savings. Use when: (1) Managing conversation history intelligently, (2) Reducing token usage in AI conversations, (3) Implementing semantic search for memories, (4) Building local, privacy-first memory systems.
+---
+
+# Three-Component Memory System
+
+A smart memory management system that automatically records important conversations, enables semantic search, and saves 70-90% tokens through structured storage.
+
+## When to Use This Skill
+
+### Primary Use Cases
+1. **Intelligent Conversation Management**
+   - Automatically records important discussions
+   - Provides relevant context for ongoing conversations
+   - Reduces token usage by 70-90%
+
+2. **Semantic Memory Search**
+   - Finds memories by meaning, not just keywords
+   - Understands context and relationships
+   - Returns most relevant memories first
+
+3. **Local Privacy-First Storage**
+   - All data stored locally (LanceDB + SQLite + NetworkX)
+   - No cloud dependencies or data sharing
+   - Full control over your memory data
+
+### Trigger Phrases
+- "Remember this conversation"
+- "Search my memories about..."
+- "What did we discuss about..."
+- "Save this for later reference"
+- "Find related conversations"
+
+## Quick Start
+
+### Installation
+```bash
+# Copy skill to OpenClaw directory
+cp -r three-component-memory-skill-creator-optimized ~/.openclaw/skills/three-component-memory
+
+# Install dependencies
+pip install lancedb networkx sentence-transformers
+```
+
+### Basic Usage
+```python
+from three_component_memory import MemorySystem
+
+# Initialize (auto-records important conversations)
+memory = MemorySystem()
+
+# Search semantically
+results = memory.search("project planning", search_type="semantic")
+
+# Get conversation context
+context = memory.get_context("current discussion topic")
+```
+
+## Core Workflows
+
+### 1. Automatic Conversation Recording
+The system automatically:
+- Analyzes conversation importance
+- Records significant discussions
+- Tags and categorizes content
+- Maintains data consistency across three components
+
+### 2. Semantic Search
+- **Vector search (LanceDB)**: Finds semantically similar content
+- **Text search (SQLite)**: Fast keyword matching
+- **Hybrid search**: Combines both for best results
+- **Relationship search (NetworkX)**: Finds connected memories
+
+### 3. Token Optimization
+- **Structured storage**: Reduces redundant text
+- **Smart context selection**: Only includes relevant memories
+- **Automatic summarization**: Creates concise memory summaries
+- **Efficient retrieval**: Fast search reduces processing time
+
+## Configuration
+
+### Default Settings
+```yaml
+# Auto-configured, no setup needed
+auto_record: true
+importance_threshold: 3      # Record conversations with importance ≥ 3
+search_type: hybrid          # semantic, text, or hybrid
+max_context_memories: 3      # Memories included in context
+```
+
+### Customization (Optional)
+```python
+# Custom configuration
+memory = MemorySystem({
+    "auto_record": True,
+    "importance_threshold": 4,      # Only record very important conversations
+    "data_path": "~/custom/path",   # Custom storage location
+    "vector_model": "all-MiniLM-L6-v2"
+})
+```
+
+## Command Reference
+
+### OpenClaw Commands
+```
+/memory search <query> [--limit 5] [--type semantic|text|hybrid]
+/memory stats                    # Show system statistics
+/memory config auto_record on|off  # Toggle auto-recording
+```
+
+### Python API
+```python
+# Core functions
+memory.add(content, category="general", tags=[], importance=3)
+memory.search(query, search_type="hybrid", limit=5)
+memory.get_context(current_topic, limit=3)
+memory.get_stats()
+
+# Advanced features
+memory.export(format="json")     # Export memories
+memory.import(file_path)         # Import memories
+memory.cleanup()                 # Maintenance operations
+```
+
+## Performance
+
+### Token Savings
+| Scenario | Traditional | Three-Component | Savings |
+|----------|-------------|-----------------|---------|
+| Simple query | 2,000-3,000 tokens | 300-500 tokens | 80-85% |
+| Complex query | 5,000-8,000 tokens | 800-1,200 tokens | 85-90% |
+| Daily use | 10,000+ tokens | 1,500-2,000 tokens | 80-85% |
+
+### Response Times
+- **Semantic search**: 5-15ms
+- **Text search**: 1-5ms  
+- **Hybrid search**: 10-20ms
+- **Memory addition**: 50-100ms
+
+## Technical Architecture
+
+### Three-Component Design
+```
+User Conversation → Three-Component System → Intelligent Response
+                        ↓
+        LanceDB (Semantic) + SQLite (Structured) + NetworkX (Relationships)
+```
+
+### Data Flow
+1. **Input**: Conversation → Importance analysis
+2. **Storage**: 
+   - SQLite: Metadata (category, tags, importance)
+   - LanceDB: Vector embeddings for semantic search
+   - NetworkX: Relationship graph for connections
+3. **Retrieval**: Parallel search → Result fusion → Context optimization
+
+## Examples
+
+### Example 1: Project Management
+```python
+# Auto-record project discussions
+# System automatically detects and records important project conversations
+
+# Later, search for project-related memories
+project_memories = memory.search("Q4 project timeline", search_type="semantic")
+```
+
+### Example 2: Learning Tracking
+```python
+# The system automatically records learning moments
+# When you ask about a topic later:
+learning_context = memory.get_context("Python async programming")
+# Returns relevant learning memories for context
+```
+
+### Example 3: Decision Logging
+```python
+# Important decisions are automatically recorded
+# Review past decisions:
+decisions = memory.search("architecture decision", search_type="hybrid")
+```
+
+## Troubleshooting
+
+### Common Issues
+1. **No memories being recorded**
+   - Check: `auto_record` setting (default: true)
+   - Check: `importance_threshold` (default: 3)
+   - Solution: Important conversations are recorded automatically
+
+2. **Search not finding memories**
+   - Try: Different search types (semantic/text/hybrid)
+   - Check: Memory count with `/memory stats`
+   - Solution: System learns as more conversations are recorded
+
+3. **Performance issues**
+   - Check: Available memory and disk space
+   - Solution: System is optimized for 100-10,000 memories
+
+### Debug Mode
+```python
+# Enable debug logging
+memory = MemorySystem({"debug": True})
+```
+
+## Maintenance
+
+### Regular Operations
+- **Automatic**: Data consistency checks
+- **Automatic**: Backup creation
+- **Manual**: Export/import for migration
+
+### Data Location
+- Default: `~/.openclaw/memory/three_component/`
+- Contains: `lancedb/`, `memory.db`, `graph/`
+
+## Compatibility
+- **OpenClaw**: 2026.3.13+
+- **Python**: 3.8+
+- **Dependencies**: LanceDB, NetworkX, sentence-transformers
+
+## Support
+- **Documentation**: This SKILL.md file
+- **Examples**: See bundled examples
+- **Updates**: Check for skill updates periodically

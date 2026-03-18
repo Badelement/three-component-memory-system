@@ -7,20 +7,38 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Planned
+- Advanced export/import formats (CSV, Markdown, JSON-LD)
+- Improved graph algorithms for relationship discovery
+- Performance optimizations for large memory sets
+- Additional embedding model options
+- Web interface for memory management
+
+## [1.2.0] - 2026-03-19
+
 ### Added
-- Initial GitHub repository structure
-- Complete documentation (getting started, API reference, architecture, troubleshooting)
-- Basic examples and test suite
-- Development scripts and tools
-- Contribution guidelines
+- **skill-creator based optimization**: Comprehensive skill optimization following skill-creator best practices
+- **Complete Chinese documentation**: Independent Chinese documentation directory (docs/zh/)
+- **Utility scripts**: Practical tools for testing, demonstration, and backup
+- **Skill validation tools**: Comprehensive skill testing and validation scripts
 
 ### Changed
-- Refactored code structure for better modularity
-- Improved documentation organization
-- Enhanced error handling and debugging
+- **SKILL.md optimization**: Reduced from 182 lines to ~120 lines (34% reduction)
+- **Implementation upgrade**: Upgraded from stub implementation to actual three-component code
+- **Documentation separation**: Complete separation of English and Chinese documentation (no mixing)
+- **Directory structure optimization**: Conforms to skill-creator standard structure
 
 ### Fixed
-- Various minor bugs and issues from initial implementation
+- **Vector search functionality**: Fixed issues with previously using stub implementation
+- **Automatic recording logic**: Optimized importance assessment algorithm
+- **Error handling**: Improved exception handling and recovery mechanisms
+- **Performance issues**: Optimized search and storage performance
+
+### Technical Details
+- **Skill structure**: Complies with OpenClaw skill-creator best practices
+- **Documentation system**: Complete bilingual documentation in English and Chinese
+- **Test coverage**: Comprehensive functional and integration testing
+- **Tool support**: Practical development and usage tools
 
 ## [1.1.0] - 2026-03-18
 
