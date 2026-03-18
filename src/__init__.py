@@ -76,10 +76,12 @@ class MemorySystem:
         """Initialize the three components."""
         try:
             # Import components lazily
-            from .memory_core import (
+            # 注意：这里使用绝对导入形式，依赖于 src 目录已经在 sys.path 中，
+            # 这样在本地和 CI 环境中都可以正常工作。
+            from memory_core import (
                 SQLiteStorage,
                 LanceDBVectorStore,
-                NetworkXGraph
+                NetworkXGraph,
             )
             
             # Initialize SQLite (structured storage)
