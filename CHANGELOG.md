@@ -14,6 +14,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Additional embedding model options
 - Web interface for memory management
 
+## [1.2.1] - 2026-03-19
+
+### Added
+- **skill-creator trigger optimization**: Complete trigger mechanism overhaul based on latest skill-creator methodology
+- **Health check script**: `check_health.py` for comprehensive system diagnostics
+- **Quick demo script**: `quick_demo.py` for 2-minute interactive feature demonstration
+- **Configuration guide**: Complete `CONFIGURATION.md` with 20+ configuration options
+- **Trigger evaluation set**: 20 comprehensive trigger queries for testing
+- **Test cases**: 5 detailed test cases with verifiable assertions
+
+### Changed
+- **SKILL.md rewrite**: More "pushy" description that explicitly lists trigger scenarios
+- **Progressive disclosure**: SKILL.md now focuses on 30-second quick start, details in references/
+- **Trigger keywords**: Expanded to include natural language phrases users actually say
+- **Documentation structure**: Enhanced with clear "when to use" guidance
+- **README updates**: Added optimization overview in both English and Chinese
+
+### Fixed
+- **Undertriggering issue**: Skill now triggers more proactively based on skill-creator recommendations
+- **Edge case coverage**: Better handling of cases where users don't explicitly ask for "memory system"
+- **User experience**: Faster onboarding with clear quick start guide
+
 ## [1.2.0] - 2026-03-19
 
 ### Added

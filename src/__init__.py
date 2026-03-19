@@ -11,7 +11,7 @@ Provides automatic conversation recording, semantic search,
 and 70-90% token savings.
 """
 
-__version__ = "1.2.0"
+__version__ = "1.2.1"
 __author__ = "Your Name"
 __email__ = "your.email@example.com"
 

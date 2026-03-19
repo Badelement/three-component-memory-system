@@ -1,61 +1,105 @@
 ---
 name: three-component-memory
-description: Smart memory management system combining LanceDB (vector search), SQLite (structured storage), and NetworkX (relationship graph). Provides automatic conversation recording, semantic search, and 70-90% token savings. Use when: (1) Managing conversation history intelligently, (2) Reducing token usage in AI conversations, (3) Implementing semantic search for memories, (4) Building local, privacy-first memory systems.
+description: |
+  Smart memory management system that automatically records important conversations, enables semantic search, and saves 70-90% tokens. 
+  
+  **ALWAYS use this skill when the user:**
+  - Mentions remembering, recording, or saving important discussions
+  - Asks about reducing token usage or optimizing conversation history
+  - Wants to search for past conversations by meaning (not just keywords)
+  - Needs a local, privacy-first memory system for AI conversations
+  - Talks about "三组件", "记忆系统", "token优化", or "上下文管理"
+  
+  **Even if they don't explicitly ask for "memory system", use this skill when they:**
+  - Say "记住这个" or "这个很重要"
+  - Complain about long conversation history or high token usage
+  - Want to find something discussed before but can't remember exact words
+  - Need to build a personal knowledge base from conversations
 ---
 
 # Three-Component Memory System
 
-A smart memory management system that automatically records important conversations, enables semantic search, and saves 70-90% tokens through structured storage.
+A smart memory system that automatically records what matters, finds memories by meaning, and cuts token usage by 70-90%.
 
-## 🚀 Quick Start
+## 🚀 Get Started in 30 Seconds
 
-### Installation (Already Installed)
-The skill is pre-installed in OpenClaw. Just enable it:
-
+### 1. Check if it's enabled
 ```bash
-# Check if skill is available
 openclaw skills list | grep three-component-memory
-
-# Enable if needed
-openclaw config set skills.three-component-memory.enabled true
-openclaw gateway restart
 ```
 
-### First Use
+### 2. Use it right now
+The system works automatically. Important conversations are already being recorded.
+
+**Search your memories:**
 ```python
 from three_component_memory import MemorySystem
-
-# System auto-initializes and starts recording
 memory = MemorySystem()
-
-# Search your memories
-results = memory.search("project planning")
+results = memory.search("your search query")
 ```
 
-### OpenClaw Commands
+**Or use OpenClaw commands:**
 ```
-/memory search <query>           # Search memories (hybrid by default)
-/memory stats                    # Show memory statistics
-/memory config <key> <value>     # Update configuration
+/memory search <query>     # Find memories by meaning
+/memory stats              # See what's been recorded
+/memory config auto_record true  # Turn on automatic recording
 ```
 
-## 🎯 When to Use This Skill
+## 🎯 What This Skill Does
 
-### Primary Use Cases
-1. **Intelligent conversation history** - Automatically records important discussions
-2. **Token optimization** - Reduces context token usage by 70-90%
-3. **Semantic search** - Finds memories by meaning, not just keywords
-4. **Local memory system** - Privacy-first, no cloud dependencies
+### Automatically Records What Matters
+- **Listens** to conversations in real-time
+- **Identifies** important discussions (not casual chat)
+- **Saves** key information with semantic understanding
+- **Ignores** routine messages and system chatter
 
-### Trigger Keywords
-- "记住这个" / "记住" / "重要"
-- "搜索记忆" / "查找之前的讨论"
-- "token太多" / "上下文太长"
-- "三组件" / "记忆系统"
+### Finds Memories by Meaning (Not Keywords)
+```python
+# Searches understand what you mean
+memory.search("project planning")  # Finds: "项目规划", "sprint planning", "roadmap discussion"
+memory.search("code optimization") # Finds: "性能优化", "算法改进", "效率提升"
+```
 
-## ⚙️ Configuration
+### Cuts Token Usage Dramatically
+- **Before**: Full conversation history (1000+ tokens)
+- **After**: Only relevant memories (100-300 tokens)
+- **Savings**: 70-90% reduction in context length
 
-### Minimal Configuration
+## 📖 Learn More When You Need It
+
+The detailed documentation is in `references/` - read it when you need specific information:
+
+- **[API Reference](references/API_REFERENCE.md)** - Complete Python API with examples
+- **[Configuration Guide](references/CONFIGURATION.md)** - All settings and tuning options
+- **[Troubleshooting](references/TROUBLESHOOTING.md)** - Fix common issues
+- **[Architecture](references/ARCHITECTURE.md)** - How the three components work together
+
+## 🔧 Common Tasks
+
+### Record an Important Discussion
+```python
+# The system automatically detects importance
+# But you can explicitly mark something:
+memory.record("Project decision: We'll use FastAPI for the backend", importance=5)
+```
+
+### Search Your Memory Bank
+```python
+# Different search types for different needs
+results = memory.search("resource allocation", search_type="hybrid")  # Best match (default)
+results = memory.search("exact phrase here", search_type="text")     # Text match only
+results = memory.search("similar concepts", search_type="semantic")  # Meaning match only
+```
+
+### Optimize Existing Conversations
+```python
+# Reduce token usage for long histories
+optimized = memory.optimize_context(full_conversation_history)
+# Returns only the relevant memories (70-90% smaller)
+```
+
+## ⚙️ Minimal Configuration
+
 Add to `~/.openclaw/config.json`:
 ```json
 {
@@ -69,81 +113,22 @@ Add to `~/.openclaw/config.json`:
 }
 ```
 
-### Common Settings
-```yaml
-auto_record: true          # Auto-record important conversations
-importance_threshold: 3    # 1-5, higher = more selective
-search_limit: 5           # Default results per search
-debug: false              # Enable debug logging
-```
+## 🚨 When Things Go Wrong
 
-## 🔧 Core Workflows
+### Quick Fixes
+1. **Skill not triggering?** Check it's enabled: `openclaw skills list`
+2. **No memories found?** Lower the importance threshold
+3. **Search too slow?** Check `memory.get_stats()` for index health
+4. **Storage full?** Data is at `~/.openclaw/memory/three_component/`
 
-### 1. Automatic Recording
-- **Records**: Conversations with importance ≥ 3
-- **Ignores**: Casual chatter, system messages
-- **Keywords**: "重要", "决策", "记住", "token", "三组件"
-
-### 2. Semantic Search
-```python
-# Find related memories by meaning
-memory.search("resource optimization")
-
-# Different search types
-memory.search("exact phrase", search_type="text")
-memory.search("similar concept", search_type="semantic")
-memory.search("best match", search_type="hybrid")  # default
-```
-
-### 3. Context Optimization
-- **Before**: Full conversation history (1000+ tokens)
-- **After**: Only relevant memories (100-300 tokens)
-- **Savings**: 70-90% token reduction
-
-## 📚 Detailed Documentation
-
-For complete information, see the references directory:
-
-- **[ARCHITECTURE.md](references/ARCHITECTURE.md)** - Technical design and components
-- **[API_REFERENCE.md](references/API_REFERENCE.md)** - Complete Python API
-- **[EXAMPLES.md](references/EXAMPLES.md)** - Usage patterns and examples
-- **[TROUBLESHOOTING.md](references/TROUBLESHOOTING.md)** - Problem-solving guide
-
-## 🛠️ Maintenance
-
-### Data Location
-```
-~/.openclaw/memory/three_component/
-├── lancedb/     # Vector embeddings
-├── memory.db    # Structured data (SQLite)
-└── graph/       # Relationship network
-```
-
-### Quick Checks
+### Get Help
+Run the diagnostic script:
 ```bash
-# Check skill status
-openclaw skills info three-component-memory
-
-# Check memory count
-python -c "from three_component_memory import MemorySystem; m=MemorySystem(); print(m.get_stats())"
-```
-
-## ⚡ Performance
-
-- **Search speed**: <20ms per query
-- **Memory capacity**: 10,000+ memories
-- **Token savings**: 70-90% reduction
-- **Storage**: ~100MB for 10,000 memories
-
-## 🔄 Updates
-
-The skill auto-updates with OpenClaw. Check for updates:
-```bash
-openclaw skills sync
+python scripts/check_health.py
 ```
 
 ---
 
-**Version**: 1.1.0  
-**Status**: Production Ready  
-**Last Verified**: 2026-03-19
+**Key Principle**: This system works best when you forget it's there. It quietly records what matters, so you can focus on the conversation, not on managing memory.
+
+**Pro Tip**: The more you use it, the better it gets at understanding what's important to you.
